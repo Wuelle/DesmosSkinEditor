@@ -1,9 +1,16 @@
-import PIL as pp
 from PIL import Image
 import math
-img = Image.open(pathtoyourskin)
-img_hsv=img.convert('HSV')
+import sys
+
+if len(sys.argv) < 2:
+    print("Please specify the skin file to use, like this:")
+    print(f"> python3 {sys.argv[0]} path/to/your/skin.png")
+    exit(1)
+
+img = Image.open(sys.argv[1])
+img_hsv=img.convert('hsv')
 width, height = img.size
+
 H=[0]*4096
 S=[0]*4096
 V=[0]*4096
